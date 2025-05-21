@@ -1,0 +1,14 @@
+.star {
+    height: 20px;
+    margin-left: 2px;
+}
+
+.movie-stars {
+    float: right;
+    margin-right: 40px;
+
+}
+
+.movie-item {
+    overflow: auto;
+}

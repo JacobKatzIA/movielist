@@ -43,18 +43,24 @@ export default function MovieList() {
     }
 
     function sortMovieByTitle() {
-        const sortedTitle = [...movies].sort((a, b) => {
+        const sortedMovie = [...movies].sort((a, b) => {
             if (a.title < b.title) return -1;
             if (a.title > b.title) return 1;
             return 0;
         });
 
-        setMovies(sortedTitle)
+        setMovies(sortedMovie)
     }
+
+    function sortMovieByRating() {
+        const sortedMovie = [...movies].sort((a, b) => b.rating - a.rating);
+        setMovies(sortedMovie);
+    }
+
 
      return (
         <div>
-            <input className="form-control" placeholder="Add New Movie here..." ref={inputRef}></input>
+            <input className="form-control mb-3" placeholder="Add New Movie here..." ref={inputRef}></input>
 
             <select className="form-control mb-3" ref={ratingRef}>
                 <option value="0">Välj betyg...</option>
@@ -65,13 +71,15 @@ export default function MovieList() {
                 <option value="5">5</option>
             </select>
 
-            <button className="btn btn-success mt-3" onClick={addItem}>Spara film</button>
+            <button className="btn btn-success mt-3 mb-3" onClick={addItem}>Spara film</button>
 
-            <ul className="list-group">
+            <ul className="list-group mb-3">
                 { movies.map(movie => <Movie key={movie.id} item={movie} deleteItem={deleteItem} />) }
             </ul>
-            
-            <button className="btn btn-primary mt-3" onClick={sortMovieByTitle}>Alfabetisk ordning</button>
+            <div className="mb-3">
+                <button className="btn btn-primary me-2" onClick={sortMovieByTitle}>Alfabetisk ordning</button>
+                <button className="btn btn-primary" onClick={sortMovieByRating}>Betygsordning</button>
+            </div>
         </div>
      )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import './Movie.css';
 
 export default function Movie(props) {
-    const {title, rating, id } = props.item
+    const {title, rating} = props.item
 
     const stars = [];
     for (let i = 0; i < rating; i++) {
@@ -11,12 +11,11 @@ export default function Movie(props) {
             key={i}
             src="/images/star.png"
             alt="Star image"
-            style={{height: "20px", marginLeft: "2px"}}
+            className="star"
             />
         )
     } 
-
-
+    
     return (
         <li className="list-group-item movie-item">
             {title} 

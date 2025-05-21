@@ -42,6 +42,16 @@ export default function MovieList() {
         setMovies(movies.filter((item) => item.id !== id));
     }
 
+    function sortMovieByTitle() {
+        const sortedTitle = [...movies].sort((a, b) => {
+            if (a.title < b.title) return -1;
+            if (a.title > b.title) return 1;
+            return 0;
+        });
+
+        setMovies(sortedTitle)
+    }
+
      return (
         <div>
             <input className="form-control" placeholder="Add New Movie here..." ref={inputRef}></input>
@@ -55,11 +65,13 @@ export default function MovieList() {
                 <option value="5">5</option>
             </select>
 
-            <button className="btn btn success mb-3" onClick={addItem}>Spara film</button>
+            <button className="btn btn-success mt-3" onClick={addItem}>Spara film</button>
 
             <ul className="list-group">
                 { movies.map(movie => <Movie key={movie.id} item={movie} deleteItem={deleteItem} />) }
             </ul>
+            
+            <button className="btn btn-primary mt-3" onClick={sortMovieByTitle}>Alfabetisk ordning</button>
         </div>
      )
 }
